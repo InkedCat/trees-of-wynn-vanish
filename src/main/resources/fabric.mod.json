@@ -1,0 +1,38 @@
+{
+	"schemaVersion": 1,
+	"id": "trees-of-wynn-vanish",
+	"version": "${version}",
+	"name": "Trees of Wynn Vanish",
+	"description": "Makes trees really disappear from your screen. No more weird inside textures appearing in the air.",
+	"authors": [
+		"InkedCat"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "CC0-1.0",
+	"icon": "assets/trees-of-wynn-vanish/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"dev.inkedcat.treesofwynnvanish.TreesOfWynnVanish"
+		],
+		"client": [
+			"dev.inkedcat.treesofwynnvanish.client.TreesOfWynnVanishClient"
+		]
+	},
+	"mixins": [
+		"trees-of-wynn-vanish.mixins.json",
+		{
+			"config": "trees-of-wynn-vanish.client.mixins.json",
+			"environment": "client"
+		}
+	],
+	"depends": {
+		"fabricloader": ">=0.20.1",
+		"minecraft": "~1.21.11",
+		"java": ">=21",
+		"fabric-api": "*"
+	}
+}
