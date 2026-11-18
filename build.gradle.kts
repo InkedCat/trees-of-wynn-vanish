@@ -1,5 +1,3 @@
-import sun.jvmstat.monitor.MonitoredVmUtil.jvmArgs
-
 plugins {
 	id("net.fabricmc.fabric-loom-remap")
 	`maven-publish`
@@ -16,6 +14,7 @@ repositories {
 			includeGroup("maven.modrinth")
 		}
 	}
+	maven { url = uri("https://maven.bawnorton.com/releases") }
 }
 
 loom {
@@ -53,8 +52,8 @@ dependencies {
 	// Fabric API. This is technically optional, but you probably want it anyway.
 	modImplementation("net.fabricmc.fabric-api:fabric-api:${providers.gradleProperty("fabric_api_version").get()}")
 
+	modImplementation("com.github.bawnorton.mixinsquared:mixinsquared-fabric:${providers.gradleProperty("mixinsqr_version").get()}")
 	modCompileOnly("maven.modrinth:voxy:${providers.gradleProperty("voxy_version").get()}")
-	modCompileOnly("net.caffeinemc:sodium-fabric:${providers.gradleProperty("sodium_version").get()}")
 }
 
 tasks.processResources {
