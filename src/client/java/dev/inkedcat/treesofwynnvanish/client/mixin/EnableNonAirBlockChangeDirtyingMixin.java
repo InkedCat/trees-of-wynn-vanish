@@ -18,6 +18,6 @@ public class EnableNonAirBlockChangeDirtyingMixin {
 			at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/state/BlockState;isAir()Z")
 	)
 	private boolean towv$allowNonAirBlock(boolean original) {
-		return original;
+		return true;
 	}
 }
