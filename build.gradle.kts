@@ -29,6 +29,10 @@ loom {
 		runs {
 			configureEach {
 				jvmArguments.add("-XX:+AllowEnhancedClassRedefinition")
+				jvmArguments.add("-Dmixin.debug.export=true")
+
+				// RenderDoc crashes when it tries to snapshot Voxy geometry buffer (4GB)
+				jvmArguments.add("-Dvoxy.geometryBufferSizeOverrideMB=512")
 			}
 		}
 	}
@@ -88,6 +92,7 @@ tasks.register<Exec>("run + RenderDoc") {
 		"-classpath",
 		"gradle/wrapper/gradle-wrapper.jar",
 		"org.gradle.wrapper.GradleWrapperMain",
+		"-Prenderdoc=${providers.gradleProperty("renderdoc").getOrElse("512")}",
 		"runClient"
 	)
 }
